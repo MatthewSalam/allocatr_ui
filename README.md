@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏠 Allocatr UI
 
-## Getting Started
+> The frontend for Allocatr : a smart hostel allocation and QR-based clearance system built for Nigerian universities.
 
-First, run the development server:
+Students apply for hostel accommodation, get allocated a room automatically, and clear each department by scanning a QR code. Officers scan QR codes at their department. Admins manage rooms, run allocations, and oversee the entire process — all from a clean, role-based web interfa
+
+ 🧩 What It Does
+
+ For Students
+- View hostel allocation status and assigned room
+- Track clearance progress across all departments (Bursary, Library, ICT, etc.)
+- Display a personal HMAC-secured QR code for department officers to scan
+- Download or share QR code as PNG/PDF
+
+ For Officers
+- Scan student QR codes via camera or manual paste to record clearance
+- View all clearances processed by their department
+- Filter by date, search by name or matric number
+
+ For Admins
+- Manage hostel rooms and availability
+- Run the FCFS (First-Come, First-Served) room allocation algorithm
+- Review and verify student payment receipts
+- View all allocations with export to CSV and PDF
+- Register new officers and admins
+
+
+ 🛠 Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| Next.js 15 (App Router) | Framework |
+| Tailwind CSS | Styling |
+| Sonner | Toast notifications |
+| Axios | API communication |
+| BarcodeDetector API | In-browser QR scanning |
+
+---
+
+## 🗂 Project Structure
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🚀 Running Locally
+
+Clone the repo and install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env.local` file in the root:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+> The backend API (FastAPI + PostgreSQL) lives in a separate repository: [allocatr_api](https://github.com/MatthewSalam/allocatr_api)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔐 Auth & Roles
 
-To learn more about Next.js, take a look at the following resources:
+The app has three completely separate auth flows, each with its own token stored in `localStorage`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Role | Token Key | Login Path |
+|---|---|---|
+| Student | `token` | `/login` |
+| Officer | `officer_token` | `/officer/login` |
+| Admin | `admin_token` | `/admin/login` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Each layout validates the token on mount and redirects to login on a 401.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📸 Key Features Worth Noting
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Smart polling** — clearance page polls a lightweight status endpoint every 30s and only re-fetches full data when something actually changed, avoiding unnecessary load
+- **QR scanning** — uses the native `BarcodeDetector` browser API with a manual paste fallback for unsupported browsers
+- **Role-based layouts** — each role has its own persistent layout with navigation, profile dropdown, and logout
+- **Client-side filtering & pagination** — allocations and clearance lists are fetched once and filtered/paginated in the browser for snappy UX
+- **CSV + PDF export** — admins can export allocation data directly from the UI
