@@ -1,0 +1,238 @@
+
+.room-page-title {
+  font-family: 'Georgia', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.room-page-sub {
+  font-size: 14px;
+  color: #9E9B96;
+  margin: 0 0 2rem;
+}
+
+/* ─── Allocated layout ─────────────────────────────────────────────────────── */
+.room-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .room-layout { grid-template-columns: 1fr; }
+}
+
+/* ─── Room hero card ───────────────────────────────────────────────────────── */
+
+.room-hero {
+  background: #1a1a1a;
+  border-radius: 14px;
+  padding: 32px 28px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.room-hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9E9B96;
+}
+
+.room-hero-name {
+  font-family: 'Georgia', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.room-hero-divider {
+  height: 0.5px;
+  background: #333;
+}
+
+.room-hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.room-hero-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #C4C1BB;
+}
+
+.room-hero-stat-icon { font-size: 16px; flex-shrink: 0; }
+.room-hero-stat-value { color: #fff; font-weight: 500; }
+
+.room-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: #2D6A4F;
+  color: #fff;
+  align-self: flex-start;
+}
+
+/* ─── Info card ────────────────────────────────────────────────────────────── */
+
+.room-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 0.5px solid #E5E3DC;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.room-card-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.room-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.room-details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid #F0EDE8;
+}
+
+.room-details-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.room-details-key { color: #9E9B96; }
+.room-details-value { color: #1a1a1a; font-weight: 500; }
+
+/* ─── Next steps ───────────────────────────────────────────────────────────── */
+
+.room-next-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.room-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #4A4845;
+}
+
+.room-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #F0EDE8;
+  color: #1a1a1a;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── QR button ────────────────────────────────────────────────────────────── */
+
+.room-qr-btn {
+  width: 100%;
+  padding: 11px;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.room-qr-btn:hover { opacity: 0.85; }
+
+/* ─── Not allocated state ──────────────────────────────────────────────────── */
+
+.room-pending-wrap {
+  max-width: 520px;
+}
+
+.room-pending-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 0.5px solid #E5E3DC;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.room-pending-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.room-pending-icon { font-size: 36px; }
+
+.room-pending-title {
+  font-family: 'Georgia', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.room-pending-desc { font-size: 14px; color: #6B6963; margin: 0; }
+
+.room-pending-divider { height: 0.5px; background: #E5E3DC; }
+
+.room-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.room-status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #4A4845;
+}
+
+.room-pending-footer {
+  font-size: 13px;
+  color: #9E9B96;
+  background: #F7F6F2;
+  border-radius: 8px;
+  padding: 12px 16px;
+}

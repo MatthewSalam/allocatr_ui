@@ -1,0 +1,63 @@
+/* Only what Tailwind can't express: keyframes, spinners, shared label/input */
+
+@keyframes al-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes al-fadein {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.al-fadein {
+  animation: al-fadein 0.4s ease both;
+}
+
+.al-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid #e8e5df;
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: al-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.al-spinner-sm {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: al-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* Shared form primitives used inside the form card */
+.al-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+.al-input {
+  width: 100%;
+  border: 1px solid #e0ddd7;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: #111;
+  background: #fafaf9;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.14s, background 0.14s;
+}
+
+.al-input:focus {
+  border-color: #6B4EFF;
+  background: #fff;
+}

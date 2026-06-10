@@ -1,0 +1,21 @@
+@keyframes al2-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes al2-fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.al2-fadein {
+  animation: al2-fadein 0.3s ease both;
+}
+
+.al2-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #e8e5df;
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: al2-spin 0.7s linear infinite;
+}

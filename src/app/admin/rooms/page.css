@@ -1,0 +1,90 @@
+/* app/(admin)/rooms/page.css */
+/* Only what Tailwind can't express: modal backdrop, positioning, keyframes */
+
+@keyframes rm-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rm-fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rm-modal-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.rm-fadein {
+  animation: rm-fadein 0.3s ease both;
+}
+
+.rm-spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #e8e5df;
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: rm-spin 0.7s linear infinite;
+}
+
+.rm-spinner-sm {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: rm-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.rm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.rm-modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+  animation: rm-modal-in 0.25s ease both;
+}
+
+/* Shared input / label used inside modal */
+.rm-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.rm-input {
+  width: 100%;
+  border: 1px solid #e0ddd7;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: #111;
+  background: #fafaf9;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.14s, background 0.14s;
+}
+
+.rm-input:focus {
+  border-color: #6B4EFF;
+  background: #fff;
+}

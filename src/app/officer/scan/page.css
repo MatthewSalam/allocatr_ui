@@ -1,0 +1,78 @@
+/* app/(officer)/scan/page.css */
+/* Only what Tailwind can't express: keyframes, camera wrap, corner brackets, custom grid */
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes scan-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scan-fadein {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scan-fadein {
+  animation: scan-fadein 0.35s ease both;
+}
+
+.scan-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid #444;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: scan-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Camera wrap ─────────────────────────────────────────────────────────── */
+/* aspect-ratio + max-height + dark bg not reliably achievable inline in Tailwind */
+.scan-cam-wrap {
+  position: relative;
+  background: #0a0a0a;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  max-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scan-cam-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Corner frame guides ─────────────────────────────────────────────────── */
+.scan-cam-frame {
+  position: absolute;
+  inset: 20px;
+  pointer-events: none;
+}
+
+.scan-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: rgba(255,255,255,0.75);
+  border-style: solid;
+}
+
+.scan-corner.tl { top: 0; left: 0;     border-width: 3px 0 0 3px; border-radius: 3px 0 0 0; }
+.scan-corner.tr { top: 0; right: 0;    border-width: 3px 3px 0 0; border-radius: 0 3px 0 0; }
+.scan-corner.bl { bottom: 0; left: 0;  border-width: 0 0 3px 3px; border-radius: 0 0 0 3px; }
+.scan-corner.br { bottom: 0; right: 0; border-width: 0 3px 3px 0; border-radius: 0 0 3px 0; }
+
+/* ── Page grid — Tailwind can't do `1fr 380px` ───────────────────────────── */
+.scan-page-grid {
+  grid-template-columns: 1fr 380px;
+}
+
+@media (max-width: 860px) {
+  .scan-page-grid {
+    grid-template-columns: 1fr;
+  }
+}

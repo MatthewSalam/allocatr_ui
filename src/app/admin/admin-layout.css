@@ -1,0 +1,12 @@
+.admin-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 60px;
+  background: #fff;
+  border: 1px solid #e8e5df;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+  min-width: 200px;
+  z-index: 199;
+  overflow: hidden;
+}
